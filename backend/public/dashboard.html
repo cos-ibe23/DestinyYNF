@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard - DestinyYNF</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <h2 class="logo">DestinyYNF</h2>
+  <button onclick="logout()" class="nav-btn primary">Logout</button>
+</nav>
+
+<section class="dashboard">
+  <h2>Welcome to Your Dashboard</h2>
+
+  <div class="card">
+    <h3>Create Order</h3>
+    <form id="orderForm">
+      <input type="text" id="origin" placeholder="Origin" required>
+      <input type="text" id="destination" placeholder="Destination" required>
+      <input type="number" id="weight" placeholder="Weight (kg)" required>
+      <button type="submit">Create Order</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h3>Your Orders</h3>
+    <div id="ordersList"></div>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: #f1f5f9;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: #1e293b;
+}
+
+.logo {
+  color: #06b6d4;
+}
+
+.nav-btn {
+  margin-left: 15px;
+  text-decoration: none;
+  color: #f1f5f9;
+}
+
+.primary {
+  background: #2563eb;
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.cta-btn {
+  background: #06b6d4;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: white;
+}
+
+.why {
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.why-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.card {
+  background: #1e293b;
+  padding: 30px;
+  border-radius: 10px;
+  width: 250px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #1e293b;
+}
