@@ -18,34 +18,41 @@ if (window.location.pathname.includes("dashboard")) {
 }
 
 // CREATE ORDER
-const orderForm = document.getElementById("orderForm").addEventListener("submit", async (e) => {
-  e.preventDefault(); // 🚨 THIS IS CRITICAL
+const orderForm = document.getElementById("orderForm");
 
-  const origin = document.getElementById("origin").value;
-  const destination = document.getElementById("destination").value;
-  const weight = document.getElementById("weight").value;
+if (orderForm) {
+  orderForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  const customer_id = localStorage.getItem("userId"); // or however you're storing it
+    const origin = document.getElementById("origin").value;
+    const destination = document.getElementById("destination").value;
+    const weight = document.getElementById("weight").value;
 
-  const res = await fetch("/orders", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      customer_id,
-      origin,
-      destination,
-      weight
-    })
+    const user = JSON.parse(localStorage.getItem("user"));
+    const customer_id = user?.id;
+
+    const res = await fetch(`${BASE_URL}/orders`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        customer_id,
+        origin,
+        destination,
+        weight
+      })
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      alert("Order created!");
+      orderForm.reset();
+    } else {
+      alert(data.error || "Order failed");
+    }
   });
+}
 
-  const data = await res.json();
-
-  if (res.ok) {
-    alert("Order created!");
-  } else {
-    alert(data.error || "Order failed");
-  }
-});
 
 // LOGIN
 const loginForm = document.getElementById("loginForm");
