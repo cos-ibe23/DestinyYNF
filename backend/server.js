@@ -33,7 +33,7 @@ app.post("/signup", async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = await pool.query(
-      "INSERT INTO customers (name, email, password_hash) VALUES ($1, $2, $3) RETURNING id, name, email",
+      "INSERT INTO destiny_customers(name, email, password_hash) VALUES ($1, $2, $3) RETURNING id, name, email",
       [name, email, hashedPassword]
     );
 
@@ -56,7 +56,7 @@ app.post("/login", async (req, res) => {
 
   try {
     const user = await pool.query(
-      "SELECT * FROM customers WHERE email = $1",
+      "SELECT * FROM destiny_customers WHERE email = $1",
       [email]
     );
 
@@ -98,7 +98,7 @@ app.post("/orders", async (req, res) => {
 
   try {
     const newOrder = await pool.query(
-      "INSERT INTO orders (customer_id, origin, destination, weight) VALUES ($1,$2,$3,$4) RETURNING *",
+      "INSERT INTO destiny_orders (customer_id, origin, destination, weight) VALUES ($1,$2,$3,$4) RETURNING *",
       [customer_id, origin, destination, weight]
     );
 
